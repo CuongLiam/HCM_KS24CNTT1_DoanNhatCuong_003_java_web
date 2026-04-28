@@ -33,4 +33,22 @@ public class EmployeeService {
     public void delete(Long id) {
         list.removeIf(e -> e.getId().equals(id));
     }
+
+    public List<Employee> search(String keyword) {
+        if (keyword == null || keyword.isEmpty()) return list;
+
+        return list.stream()
+                .filter(e -> e.getFullName().toLowerCase().contains(keyword.toLowerCase())
+                        || e.getPosition().toLowerCase().contains(keyword.toLowerCase()))
+                .toList();
+    }
+
+    public List<Employee> paginate(List<Employee> data, int page, int size) {
+        int start = page * size;
+        int end = Math.min(start + size, data.size());
+
+        if (start > data.size()) return new ArrayList<>();
+
+        return data.subList(start, end);
+    }
 }
