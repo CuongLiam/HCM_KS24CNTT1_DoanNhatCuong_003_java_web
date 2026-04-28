@@ -4,7 +4,9 @@
 
 <h2>Form</h2>
 
-<form th:action="@{/employees/create}" th:object="${employee}" method="post">
+<form th:action="@{/employees/create}"
+      th:object="${employee}"
+      method="post">
 
   <input type="hidden" th:field="*{id}" />
 
