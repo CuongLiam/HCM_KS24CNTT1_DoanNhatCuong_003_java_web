@@ -52,25 +52,38 @@ public class EmployeeController {
         return "redirect:/employees";
     }
 
+//    @GetMapping
+//    public String list(
+//            @RequestParam(defaultValue = "") String keyword,
+//            @RequestParam(defaultValue = "0") int page,
+//            Model model) {
+//
+//        int size = 5;
+//
+//        // search
+//        var filtered = service.search(keyword);
+//
+//        // pagination
+//        var employees = service.paginate(filtered, page, size);
+//
+//        int totalPages = (int) Math.ceil((double) filtered.size() / size);
+//
+//        model.addAttribute("employees", employees);
+//        model.addAttribute("currentPage", page);
+//        model.addAttribute("totalPages", totalPages);
+//        model.addAttribute("keyword", keyword);
+//
+//        return "employee-list";
+//    }
+
     @GetMapping
     public String list(
-            @RequestParam(defaultValue = "") String keyword,
-            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(name = "keyword", defaultValue = "") String keyword,
             Model model) {
 
-        int size = 5;
-
-        // search
-        var filtered = service.search(keyword);
-
-        // pagination
-        var employees = service.paginate(filtered, page, size);
-
-        int totalPages = (int) Math.ceil((double) filtered.size() / size);
+        var employees = service.search(keyword);
 
         model.addAttribute("employees", employees);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", totalPages);
         model.addAttribute("keyword", keyword);
 
         return "employee-list";

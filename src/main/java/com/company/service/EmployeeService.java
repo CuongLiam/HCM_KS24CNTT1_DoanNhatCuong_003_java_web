@@ -43,12 +43,12 @@ public class EmployeeService {
                 .toList();
     }
 
-    public List<Employee> paginate(List<Employee> data, int page, int size) {
-        int start = page * size;
-        int end = Math.min(start + size, data.size());
-
-        if (start > data.size()) return new ArrayList<>();
-
-        return data.subList(start, end);
-    }
+//    public List<Employee> paginate(List<Employee> data, int page, int size) {
+//        int start = page * size;
+//        int end = Math.min(start + size, data.size());
+//
+//        if (start > data.size()) return new ArrayList<>();
+//
+//        return data.subList(start, end);
+//    }
 }
